@@ -73,19 +73,20 @@ class AppRepositoryImpl implements AppRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> userIsLogin() async{
+  Future<Either<Failure, ProfilesModel>> userIsAuthenticated() async{
     try{
-      bool response = localDataSource!.userIsLogin();
+      bool response = localDataSource!.userIsAuthenticated();
+      ProfilesModel profilesModel = ProfilesModel();
       if(response){
         final res = await getProfiles();
         if(res.isRight){
-          return Right(true);
+          return Right(res.right);
         }
         else{
-          return Right(false);
+          return Right(profilesModel);
         }
       }
-      return Right(response);
+      return Right(profilesModel);
     }on CacheException catch(e){
       return Left(CacheFailure(message: e.toString()));
     }

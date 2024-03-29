@@ -13,7 +13,7 @@ abstract class AppLocalDataSource {
   bool setLanguage(bool isEn);
   bool getLanguage();
 
-  bool userIsLogin();
+  bool userIsAuthenticated();
 }
 
 class AppLocalDateSourceImpl implements AppLocalDataSource {
@@ -137,7 +137,7 @@ class AppLocalDateSourceImpl implements AppLocalDataSource {
   }
 
   @override
-  bool userIsLogin() {
+  bool userIsAuthenticated() {
     try {
       String token = getToken();
       if (token.isNotEmpty){

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class SplashPage extends GetView<SplashPageController> {
   SplashPage({super.key}){
-    controller.userIsLogin();
+    controller.userIsAuthenticated();
   }
 
   @override

@@ -7,7 +7,7 @@ import 'package:booking_app/data/models/profiles_model.dart';
 abstract class AppRepository {
   ////////////////////// USER ///////////////////////////
   Future<Either<Failure, bool>> login(Map<String, dynamic> body);
-  Future<Either<Failure, bool>> userIsLogin();
+  Future<Either<Failure, ProfilesModel>> userIsAuthenticated();
   Future<Either<Failure, OtpModel>> getOtpCode(String phoneNumber);
   Future<Either<Failure, bool>> verifyOtp(Map<String,dynamic> body);
   Future<Either<Failure, ProfilesModel>> getProfiles();
